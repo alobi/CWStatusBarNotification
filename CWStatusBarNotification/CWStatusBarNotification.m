@@ -217,14 +217,6 @@ static void cancel_delayed_block(CWDelayedBlockHandle delayedHandle)
         // create tap recognizer
         self.tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(notificationTapped:)];
         self.tapGestureRecognizer.numberOfTapsRequired = 1;
-
-        // create default tap block
-        __weak typeof(self) weakSelf = self;
-        self.notificationTappedBlock = ^(void) {
-            if (!weakSelf.notificationIsDismissing) {
-                [weakSelf dismissNotification];
-            }
-        };
     }
     return self;
 }
